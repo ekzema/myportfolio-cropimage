@@ -1,5 +1,5 @@
 == README
 
-My portfolio "Crop Images"
+My Portfolio "Crop Images"
 
 
