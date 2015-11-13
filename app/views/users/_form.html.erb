@@ -1,0 +1,67 @@
+<div style="width: 270px;margin:auto;">
+  <%= form_for(@user, :html => {"data-parsley-validate" => true}) do |f| %>
+  
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %></h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+      <% end %>
+
+
+    <div class="inputUser">
+      <span class='redField'>*</span><%= f.label "Почта" %>
+      <%= f.email_field :email, size: 40, "required" => true, "type" => "email", "data-parsley-trigger" => "change", "data-parsley-error-message" => "Введите свой <span style='font-weight: bold;color:#5EBB5E;'>Email</span>".html_safe %>
+    </div>
+
+    <div class="inputUser">
+      <span class='redField'>*</span><%= f.label "Логин" %>
+      <%= f.text_field :login, size: 40, "required" => true, "data-parsley-trigger" => "change", "data-parsley-error-message" => "Введите свой <span style='font-weight: bold;color:#5EBB5E;'>Login</span>".html_safe  %>
+    </div>
+
+    <div class="inputUser">
+      <span class='redField'>*</span><%= f.label "Имя" %>
+      <%= f.text_field :name, size: 40, "required" => true, "data-parsley-trigger" => "change", "data-parsley-error-message" => "Введите своё <span style='font-weight: bold;color:#5EBB5E;'>Имя</span>".html_safe %>
+    </div>
+
+    <div class="inputUser">
+      <span class='redField'>*</span><%= f.label "Фамилия" %>
+      <%= f.text_field :last_name, size: 40, "required" => true, "data-parsley-trigger" => "change", "data-parsley-error-message" => "Введите свою <span style='font-weight: bold;color:#5EBB5E;'>Фамилию</span>".html_safe %>
+    </div>
+
+    <div class="inputUser">
+      <span class='redField'>*</span><%= f.label "Номер телефона" %>
+      <%= f.telephone_field :phone, size: 40, placeholder: "(+380) ___ __ __", "required" => true, "data-parsley-trigger" => "change", "data-parsley-error-message" => "Введите свой <span style='font-weight: bold;color:#5EBB5E;'>Номер телефона</span>".html_safe %>
+    </div>
+
+    <div class="inputUser">
+      <span class='redField'>*</span><%= f.label "Дата рождения" %>
+      <%= f.date_field :birth, size: 40, "required" => true, "data-parsley-trigger" => "change", "data-parsley-error-message" => "Введите свою <span style='font-weight: bold;color:#5EBB5E;'>Дату рождения</span>".html_safe %>
+    </div>
+
+    <div class="inputUser">
+      <span class='redField'>*</span><%= f.label :password, 'Пароль' %>
+      <%= f.password_field :password, size: 40, "required" => true, "data-parsley-trigger" => "change", 'data-parsley-length' => '[6, 16]',  "data-parsley-error-message" => "Пароль должен быть <span style='font-weight: bold;color:#5EBB5E;'>min 6 - max 16</span>".html_safe %>
+    </div>
+
+    <div class="inputUser">
+      <span class='redField'>*</span><%= f.label :password_confirmation, 'Повторите пароль' %>
+      <%= f.password_field :password_confirmation, size: 40, "required" => true, "data-parsley-trigger" => "change", 'data-parsley-length' => '[6, 16]',  "data-parsley-error-message" => "Пароль должен быть <span style='font-weight: bold;color:#5EBB5E;'>min 6 - max 16</span>".html_safe %>
+    </div><br>
+
+        <h4>Докажите что вы не Робот! :)</h4>
+        <div class="inputUser">
+      <span class='redField'>*</span><%= f.label :humanizer_answer, @user.humanizer_question %>
+      <%= f.text_field :humanizer_answer, "required" => true, "data-parsley-trigger" => "change", "data-parsley-error-message" => "Введите правельный <span style='font-weight: bold;color:#5EBB5E;'>Ответ</span>" %>
+      <%= f.hidden_field :humanizer_question_id %>
+    </div>
+    <div>
+      <%= f.submit "Реистрация" %>
+    </div>
+  <% end %>
+</div>

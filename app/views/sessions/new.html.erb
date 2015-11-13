@@ -1,0 +1,22 @@
+
+
+  <h1>Войти</h1>
+  <% if flash[:alert] %>
+    <p id="notice"><%= flash[:alert] %></p>
+  <% end %>
+  <%= form_tag do %>
+      <div>
+        <%= label_tag :login, 'Логин:' %>
+        <%= text_field_tag :login, params[:login] %>
+      </div>
+      <div>
+        <%= label_tag :password, 'Пароль:' %>
+        <%= password_field_tag :password, params[:password] %>
+      </div>
+      <div>
+        <%= submit_tag "Войти" %>
+      </div>
+    
+  <% end %>
+  <%= link_to 'Регистрация', new_user_path %>
+

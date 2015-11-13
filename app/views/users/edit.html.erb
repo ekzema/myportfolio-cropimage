@@ -1,0 +1,50 @@
+<div class="page-header">
+<h3 style="text-align:center;">Редактировать</h3>
+</div>
+<div style="width: 245px;margin:auto;">
+<%= form_for @user do |f| %>
+  <div class="inputUser">
+      <span class='redField'>*</span><%= f.label "Почта" %>
+      <%= f.email_field :email, size: 40, "required" => true, "type" => "email", "data-parsley-trigger" => "change", "data-parsley-error-message" => "Введите свой <span style='font-weight: bold;color:#5EBB5E;'>Email</span>".html_safe %>
+    </div>
+
+    <div class="inputUser">
+      <span class='redField'>*</span><%= f.label "Логин" %>
+      <%= f.text_field :login, size: 40, "required" => true, "data-parsley-trigger" => "change", "data-parsley-error-message" => "Введите свой <span style='font-weight: bold;color:#5EBB5E;'>Login</span>".html_safe  %>
+    </div>
+
+    <div class="inputUser">
+      <span class='redField'>*</span><%= f.label "Имя" %>
+      <%= f.text_field :name, size: 40, "required" => true, "data-parsley-trigger" => "change", "data-parsley-error-message" => "Введите своё <span style='font-weight: bold;color:#5EBB5E;'>Имя</span>".html_safe %>
+    </div>
+
+    <div class="inputUser">
+      <span class='redField'>*</span><%= f.label "Фамилия" %>
+      <%= f.text_field :last_name, size: 40, "required" => true, "data-parsley-trigger" => "change", "data-parsley-error-message" => "Введите свою <span style='font-weight: bold;color:#5EBB5E;'>Фамилию</span>".html_safe %>
+    </div>
+
+    <div class="inputUser">
+      <span class='redField'>*</span><%= f.label "Номер телефона" %>
+      <%= f.telephone_field :phone, size: 40, placeholder: "(+380) ___ __ __", "required" => true, "data-parsley-trigger" => "change", "data-parsley-error-message" => "Введите свой <span style='font-weight: bold;color:#5EBB5E;'>Номер телефона</span>".html_safe %>
+    </div>
+
+    <div class="inputUser">
+      <span class='redField'>*</span><%= f.label "Дата рождения" %>
+      <%= f.date_field :birth, size: 40, "required" => true, "data-parsley-trigger" => "change", "data-parsley-error-message" => "Введите свою <span style='font-weight: bold;color:#5EBB5E;'>Дату рождения</span>".html_safe %>
+    </div>
+
+    <div class="inputUser">
+      <%= f.label :password, 'Пароль' %>
+      <%= f.password_field :password, size: 40, "minlength" => "6", "maxlength" => "16" %>
+    </div>
+
+    <div class="inputUser">
+      <%= f.label :password_confirmation, 'Повторите пароль' %>
+      <%= f.password_field :password_confirmation, size: 40, "minlength" => "6", "maxlength" => "16" %>
+    </div><br>
+
+  <div>
+    <%= f.submit "Обновить", class: "btn btn-success" %>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<%= link_to("Удалить", @user, method: :delete, data: { confirm: "Вы уверены что хотите удалить пользователя #{@user.login}?" }, class: "btn btn-danger" ) %>
+  </div>
+<% end %>
+</div>

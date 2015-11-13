@@ -1,0 +1,81 @@
+.avatarUser{
+	border-radius: 300px;	
+	width: 250px;
+	height: 250px;
+}
+
+.formAvatar{	
+	position: relative;
+	width: 280px;
+}
+
+.destroyAvatar{
+	position: absolute;
+	top: 5px;
+	left: 5px;
+}
+
+.destroyAvatar:hover{
+	text-decoration: none;
+}
+
+.landscape-crop-preview {
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 0px; 
+}
+
+.landscape-crop-area {
+  float: left;
+  margin-bottom: 20px;  
+}
+
+.clear {
+  clear: both;
+}
+
+.formCrop{
+	position: relative;
+
+	width: 720px;
+	margin: 0 auto;
+}
+
+.cropSubmit{
+margin-left: 110px;
+margin-top: -20px;
+}
+
+.min-avatarUser{
+	position: absolute;
+	border-radius: 100%;
+	width: 70px;
+	height: 70px;
+	right: 0;
+}
+
+.h1-heder{
+	position: relative;
+	
+	height: 70px;
+}
+
+.h1-heder > h1{
+	position: absolute;
+}
+
+.userName{
+	position: absolute;	
+	right: 80px;
+	top: 20px;
+}
+
+.redField{
+	color: red;
+	float: left;
+	margin-right: 5px;
+}
+
+.inputUser input{
+	margin-bottom: 0 !important;
+}

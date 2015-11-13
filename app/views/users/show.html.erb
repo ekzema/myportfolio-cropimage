@@ -1,0 +1,44 @@
+ <div class="page-header"></div>
+
+ <table style="width:540px; margin:auto;">
+    <tr>
+      <td rowspan="20"> <div class="formAvatar">
+      <% unless @user.avatar_file_name.nil? %>
+        <%= link_to("X", {action: :delete_attachment, id: @user.id}, method: :put, data: { confirm: 'Вы уверины что хотите удалить?' }, class: "btn-mini btn-danger destroyAvatar", title: "Удалить Avatar") %>
+      <% end %>
+      <%= image_tag @user.avatar.url(:medium), class: "avatarUser" %>
+      <%= form_for @user do |form| %>
+        <%= form.file_field :avatar %>
+        <%= form.submit 'Загрузить', class: "btn btn-success" %>
+      <% end %>
+    </div>
+      </td>
+    </tr>
+ 	  <tr>
+      <td><strong>Почта</strong></td>
+      <td><%= @user.email %></td>
+    </tr>
+  	<tr>
+      <td><strong>Login:</strong></td>
+      <td><%= @user.login %></td>
+    </tr>
+  	<tr>
+      <td><strong>Имя:</strong></td>
+      <td><%= @user.name %></td>
+    </tr>
+  	<tr>
+      <td><strong>Фамилия:</strong></td>
+      <td><%= @user.last_name %></td>
+    </tr>
+  	<tr>
+      <td><strong>Номер телефона:</strong></td>
+      <td><%= @user.phone%></td>
+    </tr>
+  	<tr>
+      <td><strong>Дата рождения:</strong></td>
+      <td><%= Russian::strftime(@user.birth, "%d %B %Y") %></td>
+    </tr>
+    <tr>
+    	<td><%= link_to 'Изменить', edit_user_path(@user), class: "btn btn-info", style: "margin-top:10px;" %></td>
+    </tr>
+ </table>

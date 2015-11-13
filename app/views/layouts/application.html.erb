@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <title>LightIt</title>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= stylesheet_link_tag    '/bootstrap/css/bootstrap.css' %>  
+  <%= stylesheet_link_tag    '/bootstrap/css/bootstrap-responsive.css' %>
+  <%= stylesheet_link_tag    '/parsley/parsley.css' %> 
+  <%= javascript_include_tag 'application' %>  
+  <%= javascript_include_tag '/bootstrap/js/bootstrap.js'%> 
+  <%= javascript_include_tag '/parsley/parsley.min.js'%>  
+  <%= csrf_meta_tags %>   
+</head>
+<body>
+   <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="/"><span class="text-info">My Potfolio</span></a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="/">Главная</a></li>
+              <li><%= link_to 'Контакты', welkome_contact_url %> </li>
+              <% if session[:user_id] %>   
+                <li><%= link_to 'Личный кабинет', user_path(@user) %></li>
+              <% end %>
+            </ul>
+            <% unless session[:user_id] %> 
+            <%= link_to 'Регистрация', new_user_path, class: "btn btn-primary pull-right", style: "margin-left:30px;" %> 
+              <%= form_tag({:action=>"create", :controller=>"sessions"}, :class => "navbar-form pull-right") do %>
+                <%= text_field_tag :login, params[:login], placeholder: "Login", class: "span2" %>     
+                <%= password_field_tag :password, params[:password], placeholder: "Пароль", class: "span2" %>   
+                <%= submit_tag "Войти", class: "btn btn-success" %>   
+              <% end %>
+
+              <% else %>
+              <%= link_to 'Выход', logout_path, method: :delete, class: "btn btn-danger pull-right btn" %>
+            <% end %>
+
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>      
+    </div>
+   <div id="wrap">
+     <div class="container">
+      <div class="page-header">
+        <% if flash[:alert] %>          
+          <div class="alert alert-error" style="text-align:center;">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <%= flash[:alert] %></div>
+        <% end %>
+        <% if flash[:notice] %>          
+          <div class="alert alert-success" style="text-align:center;">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <%= flash[:notice] %>
+          </div>
+        <% end %>
+        <%= yield %>
+          </div>
+          <div id="push"></div>
+    </div>
+    </div>
+    <div id="footer">
+   <div class="container" style="padding-top:5px;">
+      <center><a href="https://github.com/ekzema/myportfolio-cropimage.git" target="_blank" class="gitHub" title="GitHub"><img src="/git.png" alt="GitHub" title="GitHub"></center>
+    </div>
+    </div>
+
+</body>
+</html>
